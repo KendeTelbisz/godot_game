@@ -2,12 +2,14 @@
 
 [ext_resource type="Texture2D" uid="uid://b7rf61t1bsl6r" path="res://assets/object-NEG.svg" id="1_6e84v"]
 [ext_resource type="Texture2D" uid="uid://ctqlyjfiprucf" path="res://assets/player.svg" id="2_4dvvg"]
+[ext_resource type="Script" uid="uid://dxwpcmmldsgvg" path="res://scripts/player.gd" id="2_rnjyy"]
+[ext_resource type="Script" uid="uid://dlv4atr0jtjhr" path="res://scenes/magnet.gd" id="3_4vge2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_efyvp"]
 radius = 182.84967
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ytkqx"]
-radius = 12781.364
+radius = 4000.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6e84v"]
 radius = 396.4669
@@ -15,6 +17,7 @@ radius = 396.4669
 [node name="Node2D" type="Node2D" unique_id=2050736834]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1612839325]
+script = ExtResource("2_rnjyy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=889227905]
 shape = SubResource("CircleShape2D_efyvp")
@@ -28,11 +31,12 @@ zoom = Vector2(0.15, 0.15)
 [node name="magnetSensor" type="Area2D" parent="CharacterBody2D" unique_id=769077281]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/magnetSensor" unique_id=344913844]
-scale = Vector2(0.76, 0.76000047)
 shape = SubResource("CircleShape2D_ytkqx")
 
 [node name="Magnet-001" type="Area2D" parent="." unique_id=1326027472]
 position = Vector2(1631, 12)
+script = ExtResource("3_4vge2")
+polarity = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="Magnet-001" unique_id=1655955701]
 texture = ExtResource("1_6e84v")
@@ -40,3 +44,127 @@ texture = ExtResource("1_6e84v")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Magnet-001" unique_id=1785998965]
 shape = SubResource("CircleShape2D_6e84v")
 debug_color = Color(0.994831, 0, 0.22318771, 0.41960785)
+
+[node name="Solid" type="StaticBody2D" parent="Magnet-001" unique_id=884422110]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Magnet-001/Solid" unique_id=556677889]
+shape = SubResource("CircleShape2D_6e84v")
+
+[node name="Magnet-002" type="Area2D" parent="." unique_id=1144084052]
+position = Vector2(5813, 12)
+script = ExtResource("3_4vge2")
+polarity = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="Magnet-002" unique_id=1731964234]
+texture = ExtResource("1_6e84v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Magnet-002" unique_id=1480578055]
+shape = SubResource("CircleShape2D_6e84v")
+debug_color = Color(0.994831, 0, 0.22318771, 0.41960785)
+
+[node name="Solid" type="StaticBody2D" parent="Magnet-002" unique_id=845722500]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Magnet-002/Solid" unique_id=1775420778]
+shape = SubResource("CircleShape2D_6e84v")
+
+[node name="Magnet-003" type="Area2D" parent="." unique_id=841293045]
+position = Vector2(10534, 12)
+script = ExtResource("3_4vge2")
+polarity = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="Magnet-003" unique_id=883082057]
+texture = ExtResource("1_6e84v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Magnet-003" unique_id=333154121]
+shape = SubResource("CircleShape2D_6e84v")
+debug_color = Color(0.994831, 0, 0.22318771, 0.41960785)
+
+[node name="Solid" type="StaticBody2D" parent="Magnet-003" unique_id=2050192809]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Magnet-003/Solid" unique_id=393097416]
+shape = SubResource("CircleShape2D_6e84v")
+
+[node name="Magnet-004" type="Area2D" parent="." unique_id=532921086]
+position = Vector2(10534, 12)
+script = ExtResource("3_4vge2")
+polarity = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="Magnet-004" unique_id=1013387587]
+texture = ExtResource("1_6e84v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Magnet-004" unique_id=319668980]
+shape = SubResource("CircleShape2D_6e84v")
+debug_color = Color(0.994831, 0, 0.22318771, 0.41960785)
+
+[node name="Solid" type="StaticBody2D" parent="Magnet-004" unique_id=1872910570]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Magnet-004/Solid" unique_id=42153418]
+shape = SubResource("CircleShape2D_6e84v")
+
+[node name="Magnet-005" type="Area2D" parent="." unique_id=2006209860]
+position = Vector2(10534, 12)
+script = ExtResource("3_4vge2")
+polarity = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="Magnet-005" unique_id=1888239368]
+texture = ExtResource("1_6e84v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Magnet-005" unique_id=2126096034]
+shape = SubResource("CircleShape2D_6e84v")
+debug_color = Color(0.994831, 0, 0.22318771, 0.41960785)
+
+[node name="Solid" type="StaticBody2D" parent="Magnet-005" unique_id=1608636307]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Magnet-005/Solid" unique_id=736964642]
+shape = SubResource("CircleShape2D_6e84v")
+
+[node name="Magnet-006" type="Area2D" parent="." unique_id=888671458]
+position = Vector2(8601, -5338)
+script = ExtResource("3_4vge2")
+polarity = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="Magnet-006" unique_id=1111056324]
+texture = ExtResource("1_6e84v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Magnet-006" unique_id=1520513637]
+shape = SubResource("CircleShape2D_6e84v")
+debug_color = Color(0.994831, 0, 0.22318771, 0.41960785)
+
+[node name="Solid" type="StaticBody2D" parent="Magnet-006" unique_id=1528043560]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Magnet-006/Solid" unique_id=1788231439]
+shape = SubResource("CircleShape2D_6e84v")
+
+[node name="Magnet-007" type="Area2D" parent="." unique_id=114823128]
+position = Vector2(10534, -2753)
+script = ExtResource("3_4vge2")
+polarity = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="Magnet-007" unique_id=1105575134]
+texture = ExtResource("1_6e84v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Magnet-007" unique_id=1681738096]
+shape = SubResource("CircleShape2D_6e84v")
+debug_color = Color(0.994831, 0, 0.22318771, 0.41960785)
+
+[node name="Solid" type="StaticBody2D" parent="Magnet-007" unique_id=1363069778]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Magnet-007/Solid" unique_id=2114157283]
+shape = SubResource("CircleShape2D_6e84v")
+
+[node name="Magnet-008" type="Area2D" parent="." unique_id=1932813828]
+position = Vector2(12917, 12)
+script = ExtResource("3_4vge2")
+polarity = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="Magnet-008" unique_id=177076070]
+texture = ExtResource("1_6e84v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Magnet-008" unique_id=1556759317]
+shape = SubResource("CircleShape2D_6e84v")
+debug_color = Color(0.994831, 0, 0.22318771, 0.41960785)
+
+[node name="Solid" type="StaticBody2D" parent="Magnet-008" unique_id=1037030705]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Magnet-008/Solid" unique_id=868948395]
+shape = SubResource("CircleShape2D_6e84v")
