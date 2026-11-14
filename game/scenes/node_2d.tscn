@@ -1,12 +1,42 @@
 [gd_scene format=3 uid="uid://dxllcsff00ecp"]
 
-[ext_resource type="Texture2D" uid="uid://ctqlyjfiprucf" path="res://assets/player.svg" id="2_4dvvg"]
+[ext_resource type="Texture2D" uid="uid://b7rf61t1bsl6r" path="res://assets/object-NEG.svg" id="1_6e84v"]
 [ext_resource type="AudioStream" uid="uid://crxlifi1hp3g" path="res://scripts/sound(2).wav" id="2_fws66"]
 [ext_resource type="Script" uid="uid://dxwpcmmldsgvg" path="res://scripts/player.gd" id="2_rnjyy"]
+[ext_resource type="AudioStream" uid="uid://dv5w2yn577nj1" path="res://assets/Coin Pickup Sound Effect 🪙 Free SFX #shorts - FreeSFX-[AudioTrimmer.com].mp3" id="4_04qyp"]
+[ext_resource type="Texture2D" uid="uid://cv5pfubdxexqn" path="res://assets/object-POS.svg" id="5_04qyp"]
 [ext_resource type="Script" uid="uid://bnjqgiq6vi4bh" path="res://scripts/game.gd" id="8_game"]
 
+[sub_resource type="Gradient" id="Gradient_t18sy"]
+offsets = PackedFloat32Array(0.13701923, 1)
+colors = PackedColorArray(0.6862745, 0.6862745, 0.6862745, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_efyvp"]
+gradient = SubResource("Gradient_t18sy")
+fill_from = Vector2(1, 1)
+fill_to = Vector2(0, 0)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_efyvp"]
-radius = 182.84967
+radius = 50.01
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_efyvp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_6e84v")
+}],
+"loop": 1,
+"name": &"NEG",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_04qyp")
+}],
+"loop": 1,
+"name": &"POS",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ytkqx"]
 radius = 4000.0
@@ -27,17 +57,27 @@ text = "Pont: 0 / 32"
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1612839325]
 script = ExtResource("2_rnjyy")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="CharacterBody2D" unique_id=136391394]
+[node name="Sprite2D2" type="Sprite2D" parent="CharacterBody2D" unique_id=925412802]
+position = Vector2(-210.99963, -184.99973)
+scale = Vector2(126.90624, 74.84375)
+texture = SubResource("GradientTexture2D_efyvp")
+
+[node name="change" type="AudioStreamPlayer2D" parent="CharacterBody2D" unique_id=136391394]
 stream = ExtResource("2_fws66")
+
+[node name="point" type="AudioStreamPlayer2D" parent="CharacterBody2D" unique_id=952313600]
+stream = ExtResource("4_04qyp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=889227905]
 shape = SubResource("CircleShape2D_efyvp")
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=1871983777]
-texture = ExtResource("2_4dvvg")
-
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=1484656693]
 zoom = Vector2(0.15, 0.15)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=534196365]
+scale = Vector2(0.1200012, 0.1200012)
+sprite_frames = SubResource("SpriteFrames_efyvp")
+animation = &"POS"
 
 [node name="magnetSensor" type="Area2D" parent="CharacterBody2D" unique_id=769077281]
 

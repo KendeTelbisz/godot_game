@@ -41,11 +41,12 @@ const ITEMS := [
 @onready var points_label: Label = $PointsLabel
 @onready var message_label: Label = $MessageLabel
 @onready var back_button: Button = $BackButton
-
+@onready var music := $AudioStreamPlayer2D
 var rows: Array = []
 
 
 func _ready() -> void:
+	music.play()
 	GameData.reload()
 	for index in ITEMS.size():
 		var row := {

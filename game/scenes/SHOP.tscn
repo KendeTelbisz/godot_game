@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://e5yyftesxbys"]
 
 [ext_resource type="Script" uid="uid://dlthqr0dytr4e" path="res://scripts/shop.gd" id="1_shop"]
+[ext_resource type="AudioStream" uid="uid://bdbl0chlw4b8b" path="res://assets/sound(2).wav" id="2_3lq0f"]
 
 [node name="Control" type="Control" unique_id=739134528]
 layout_mode = 3
@@ -218,3 +219,7 @@ offset_right = 280.0
 offset_bottom = 620.0
 theme_override_font_sizes/font_size = 32
 text = "Vissza"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1190327728]
+stream = ExtResource("2_3lq0f")
+autoplay = true

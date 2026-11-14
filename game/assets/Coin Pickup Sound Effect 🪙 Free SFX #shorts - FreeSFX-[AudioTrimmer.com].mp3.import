@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dv5w2yn577nj1"
+path="res://.godot/imported/Coin Pickup Sound Effect 🪙 Free SFX #shorts - FreeSFX-[AudioTrimmer.com].mp3-368980dd51ad0ed233bd455f3b81e33e.mp3str"
+
+[deps]
+
+source_file="res://assets/Coin Pickup Sound Effect 🪙 Free SFX #shorts - FreeSFX-[AudioTrimmer.com].mp3"
+dest_files=["res://.godot/imported/Coin Pickup Sound Effect 🪙 Free SFX #shorts - FreeSFX-[AudioTrimmer.com].mp3-368980dd51ad0ed233bd455f3b81e33e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

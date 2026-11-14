@@ -1,16 +1,17 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene format=3 uid="uid://c6bx1fabttyg7"]
 
-[ext_resource type="Texture2D" path="res://assets/hazard.svg" id="1_hazard"]
-[ext_resource type="Script" path="res://scripts/hazard.gd" id="2_hazard"]
+[ext_resource type="Texture2D" uid="uid://pidabwgwdtyi" path="res://assets/play_button.svg" id="2_awlwb"]
+[ext_resource type="Script" uid="uid://c65cntvqmsy5c" path="res://scripts/hazard.gd" id="2_hazard"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_hazard"]
-radius = 75.0
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_awlwb"]
+points = PackedVector2Array(67, 3, -67, -78, -70, 79)
 
-[node name="Hazard" type="Area2D"]
+[node name="Hazard" type="Area2D" unique_id=1171677868]
 script = ExtResource("2_hazard")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_hazard")
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1578391824]
+position = Vector2(-1, 1)
+texture = ExtResource("2_awlwb")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_hazard")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=7452441]
+shape = SubResource("ConvexPolygonShape2D_awlwb")

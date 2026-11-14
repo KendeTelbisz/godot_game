@@ -23,8 +23,11 @@ enum Polarity { NORTH, SOUTH }
 @export var max_magnetic_speed: float = 2500.0
 @export var magnet_contact_tolerance: float = 24.0
 
-@onready var PolarityCh := $AudioStreamPlayer2D
+@onready var PolarityCh := $change
+@onready var pointCh := $point
+
 @onready var magnet_sensor: Area2D = get_node_or_null("magnetSensor")
+@onready var animator := $AnimatedSprite2D
 
 var points: int = 0
 
@@ -35,6 +38,7 @@ func _ready() -> void:
 
 func add_point() -> void:
 	points += 1
+	pointCh.play(0.3)
 	
 
 
@@ -43,12 +47,14 @@ func _unhandled_input(event: InputEvent) -> void:
 		if current_polarity == Polarity.NORTH:
 			current_polarity = Polarity.SOUTH
 			print("Pólus váltva: DÉL (SOUTH)")
+			animator.animation = "NEG"
 			PolarityCh.play()
 			
 		else:
 			current_polarity = Polarity.NORTH
 			print("Pólus váltva: ÉSZAK (NORTH)")
 			PolarityCh.play()
+			animator.animation = "POS"
 
 
 func _physics_process(delta: float) -> void:
@@ -67,7 +73,6 @@ func _physics_process(delta: float) -> void:
 
 	if is_on_floor() and Input.is_action_just_pressed("jump"):
 		velocity.y = jump_velocity
-
 	var input_x := Input.get_axis("move_left", "move_right")
 	if attached != null:
 		var tangent := Vector2(-attached_radial.y, attached_radial.x)
@@ -81,7 +86,6 @@ func _physics_process(delta: float) -> void:
 	else:
 		var accel := acceleration if is_on_floor() else air_acceleration
 		velocity.x = move_toward(velocity.x, input_x * speed, accel * delta)
-
 	var magnetic_force := Vector2.ZERO
 
 	for area in magnets:
