@@ -6,6 +6,8 @@
 [ext_resource type="Script" uid="uid://ss6uosh6hts8" path="res://scripts/magnet_N.gd" id="3_j7wrs"]
 [ext_resource type="Texture2D" uid="uid://cv5pfubdxexqn" path="res://assets/object-POS.svg" id="5_04qyp"]
 [ext_resource type="Script" uid="uid://c7nigdf3btjic" path="res://scripts/magnet_P.gd" id="5_fws66"]
+[ext_resource type="Texture2D" uid="uid://pgcpnirq1iw6" path="res://assets/point.svg" id="7_fws66"]
+[ext_resource type="Script" uid="uid://ccfbgla0r6ob5" path="res://scripts/Point.gd" id="7_hh0fu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_efyvp"]
 radius = 182.84967
@@ -15,6 +17,12 @@ radius = 4000.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6e84v"]
 radius = 396.4669
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fws66"]
+radius = 31.016125
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hh0fu"]
+radius = 31.0
 
 [node name="Node2D" type="Node2D" unique_id=2050736834]
 
@@ -34,6 +42,11 @@ zoom = Vector2(0.15, 0.15)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/magnetSensor" unique_id=344913844]
 shape = SubResource("CircleShape2D_ytkqx")
+
+[node name="Area2D" type="Area2D" parent="CharacterBody2D" unique_id=954635780]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Area2D" unique_id=1977163401]
+shape = SubResource("CircleShape2D_efyvp")
 
 [node name="Magnet-N001" type="Area2D" parent="." unique_id=1326027472]
 position = Vector2(1631, 12)
@@ -66,3 +79,19 @@ debug_color = Color(0.994831, 0, 0.22318771, 0.41960785)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Magnet-P001/Solid" unique_id=2046084682]
 shape = SubResource("CircleShape2D_6e84v")
+
+[node name="Point_001" type="Area2D" parent="." unique_id=1373525060]
+position = Vector2(2210, -1603)
+script = ExtResource("7_hh0fu")
+
+[node name="Sprite2D" type="Sprite2D" parent="Point_001" unique_id=215821494]
+texture = ExtResource("7_fws66")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Point_001" unique_id=1920499718]
+shape = SubResource("CircleShape2D_fws66")
+debug_color = Color(0.994831, 0, 0.22318771, 0.41960785)
+
+[node name="Solid" type="StaticBody2D" parent="Point_001" unique_id=7775342]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Point_001/Solid" unique_id=1938868586]
+shape = SubResource("CircleShape2D_hh0fu")
