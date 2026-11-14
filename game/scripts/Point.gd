@@ -1,11 +1,16 @@
 extends Area2D
 
+signal collected
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
-	pass # Replace with function body.
+	body_entered.connect(_on_body_entered)
 
 
-func _process(delta: float) -> void:
-	
-	pass
+func _on_body_entered(body: Node2D) -> void:
+	if not body.is_in_group("player"):
+		return
+	if body.has_method("add_point"):
+		body.add_point()
+	collected.emit()
+	queue_free()

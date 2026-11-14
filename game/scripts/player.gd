@@ -24,23 +24,29 @@ enum Polarity { NORTH, SOUTH }
 @export var magnet_contact_tolerance: float = 24.0
 
 @onready var magnet_sensor: Area2D = get_node_or_null("magnetSensor")
-@onready var changeSound := $AudioStreamPlayer2D
+
+var points: int = 0
+
+
+func _ready() -> void:
+	add_to_group("player")
+
+
+func add_point() -> void:
+	points += 1
+
 
 func _unhandled_input(event: InputEvent) -> void:
-	# A pólus váltása (Space / toggle_polarity)
 	if event.is_action_pressed("toggle_polarity"):
 		if current_polarity == Polarity.NORTH:
 			current_polarity = Polarity.SOUTH
 			print("Pólus váltva: DÉL (SOUTH)")
-			changeSound.play()
 		else:
 			current_polarity = Polarity.NORTH
 			print("Pólus váltva: ÉSZAK (NORTH)")
-			changeSound.play()
 
 
 func _physics_process(delta: float) -> void:
-	# Kik tapadnak a játékoshoz? (csak vonzás esetén tapadunk)
 	var magnets := _overlapping_magnets()
 	var attached := _find_attached_magnet(magnets)
 
@@ -50,22 +56,15 @@ func _physics_process(delta: float) -> void:
 		attached_radial = _radial_from(attached)
 		attached_contact = _contact_distance(attached)
 
-	# 1. Gravitáció, ha nem a földön állunk és nem tapadunk mágnesre.
-	#    Tapadásnál nincs gravitáció, így körbe tud menni a mágnesen.
 	if attached == null and not is_on_floor():
 		velocity.y += gravity * delta
 		velocity.y = minf(velocity.y, max_fall_speed)
 
-	# 2. Ugrás
 	if is_on_floor() and Input.is_action_just_pressed("jump"):
 		velocity.y = jump_velocity
 
-	# 3. Mozgás. Súrlódás CSAK a földön van, levegőben megmarad a lendület
-	#    (különben a súrlódás minden frame-ben kitörölné a mágneses húzást).
 	var input_x := Input.get_axis("move_left", "move_right")
 	if attached != null:
-		# A mágnes felületén: D = az óramutató járása szerint, A = ellene.
-		# A csúszás lendülete megmarad, csak a gombnyomás módosítja.
 		var tangent := Vector2(-attached_radial.y, attached_radial.x)
 		var slide_speed := velocity.dot(tangent)
 		if not is_zero_approx(input_x):
@@ -78,7 +77,6 @@ func _physics_process(delta: float) -> void:
 		var accel := acceleration if is_on_floor() else air_acceleration
 		velocity.x = move_toward(velocity.x, input_x * speed, accel * delta)
 
-	# 4. Mágneses erők a szenzorral átfedésben lévő mágnesektől
 	var magnetic_force := Vector2.ZERO
 
 	for area in magnets:
@@ -87,10 +85,8 @@ func _physics_process(delta: float) -> void:
 		var direction := offset / distance
 		var magnet_polarity = area.get("polarity")
 
-		# Azonos pólus taszít (-1), ellentétes pólus vonz (+1)
 		var polarity_dir := 1.0 if current_polarity != magnet_polarity else -1.0
 
-		# Inverz négyzetes törvény, felső korláttal (nehogy szétlője a játékost)
 		var force_magnitude := magnetic_strength_multiplier / (distance * distance)
 		force_magnitude = minf(force_magnitude, max_magnetic_force)
 
@@ -98,40 +94,27 @@ func _physics_process(delta: float) -> void:
 
 	velocity += magnetic_force * delta
 
-	# 5. Csak a mágnes felé eső (radiális) sebességet csillapítjuk, a felület
-	#    menti (tangenciális) sebesség megmarad.
 	if not magnetic_force.is_zero_approx():
 		var field_dir := magnetic_force.normalized()
 		var radial_speed := velocity.dot(field_dir)
 		velocity -= field_dir * radial_speed * minf(1.0, magnetic_damping * delta)
 
-	# 6. Ha a mágnes felületén vagyunk, a radiális sebességet teljesen kivesszük:
-	#    így nem fúródunk bele a mágnesbe, csak körbecsúszunk rajta.
 	if attached != null:
 		velocity -= attached_radial * velocity.dot(attached_radial)
 
-	# Sebességkorlát mindig a végén, hogy a radiális rész ne "nyomja el"
-	# a tangenciális (csúszó) sebességet.
 	velocity = velocity.limit_length(max_magnetic_speed)
 
-	# 7. Mozgatás a beépített fizikával (ütközés, padló, lejtő)
 	move_and_slide()
 
-	# 8. A mágnes felületére rögzítés: nem csúszunk le róla és nem akadunk bele.
 	if attached != null:
 		var radial := _radial_from(attached)
-		# A körpálya érintője az új pozícióban (a csúszás irányában)
 		var tangent := Vector2(-radial.y, radial.x)
 		if tangent.dot(velocity) < 0.0:
 			tangent = -tangent
 		var slide_speed := velocity.length()
 		global_position = attached.global_position + radial * attached_contact
-		# A sebességet az új érintőre állítjuk, különben a "körberögzítés"
-		# minden frame-ben egy kicsit lefékezné a csúszást.
 		velocity = tangent * slide_speed
 
-
-# --- Segédfüggvények ---
 
 func _overlapping_magnets() -> Array:
 	var result: Array = []
@@ -145,7 +128,6 @@ func _overlapping_magnets() -> Array:
 
 func _find_attached_magnet(magnets: Array) -> Area2D:
 	for area in magnets:
-		# Taszításnál nem tapadunk, csak vonzásnál
 		if current_polarity == area.get("polarity"):
 			continue
 		if global_position.distance_to(area.global_position) <= _contact_distance(area) + magnet_contact_tolerance:

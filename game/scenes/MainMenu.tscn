@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://dxjlku71crqmh"]
+
+[ext_resource type="Texture2D" uid="uid://fi5x5cul5mj8" path="res://assets/START.png" id="1_0ykhv"]
+[ext_resource type="Script" uid="uid://gpfgmr0jxaq6" path="res://scripts/start button.gd" id="2_0ykhv"]
+
+[sub_resource type="FontVariation" id="FontVariation_yqorp"]
+
+[node name="Control" type="Control" unique_id=1262507833]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="." unique_id=1143703865]
+layout_mode = 0
+offset_left = 177.99998
+offset_top = 498.0
+offset_right = 1006.0
+offset_bottom = 709.0
+scale = Vector2(0.8872727, 0.68663275)
+theme_override_fonts/font = SubResource("FontVariation_yqorp")
+theme_override_font_sizes/font_size = 50
+icon = ExtResource("1_0ykhv")
+flat = true
+autowrap_trim_flags = 192
+script = ExtResource("2_0ykhv")
+
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
