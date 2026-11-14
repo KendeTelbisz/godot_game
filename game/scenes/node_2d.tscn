@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://ctqlyjfiprucf" path="res://assets/player.svg" id="2_4dvvg"]
 [ext_resource type="AudioStream" uid="uid://crxlifi1hp3g" path="res://scripts/sound(2).wav" id="2_fws66"]
 [ext_resource type="Script" uid="uid://dxwpcmmldsgvg" path="res://scripts/player.gd" id="2_rnjyy"]
-[ext_resource type="Script" path="res://scripts/game.gd" id="8_game"]
+[ext_resource type="Script" uid="uid://bnjqgiq6vi4bh" path="res://scripts/game.gd" id="8_game"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_efyvp"]
 radius = 182.84967
@@ -14,9 +14,9 @@ radius = 4000.0
 [node name="Node2D" type="Node2D" unique_id=2050736834]
 script = ExtResource("8_game")
 
-[node name="HUD" type="CanvasLayer" parent="."]
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1268172627]
 
-[node name="PointsLabel" type="Label" parent="HUD"]
+[node name="PointsLabel" type="Label" parent="HUD" unique_id=309389622]
 offset_left = 24.0
 offset_top = 16.0
 offset_right = 420.0

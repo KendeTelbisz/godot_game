@@ -1,0 +1,220 @@
+[gd_scene format=3 uid="uid://e5yyftesxbys"]
+
+[ext_resource type="Script" uid="uid://dlthqr0dytr4e" path="res://scripts/shop.gd" id="1_shop"]
+
+[node name="Control" type="Control" unique_id=739134528]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_shop")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1346171620]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05490196, 0.09411765, 1)
+
+[node name="TitleLabel" type="Label" parent="." unique_id=409632692]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 12.0
+offset_right = 976.0
+offset_bottom = 92.0
+theme_override_colors/font_color = Color(0.9254902, 0.9529412, 1, 1)
+theme_override_font_sizes/font_size = 64
+text = "BOLT"
+horizontal_alignment = 1
+
+[node name="PointsLabel" type="Label" parent="." unique_id=1259331479]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 96.0
+offset_right = 976.0
+offset_bottom = 142.0
+theme_override_colors/font_color = Color(0.6509804, 0.8156863, 1, 1)
+theme_override_font_sizes/font_size = 32
+text = "Pont: 0"
+horizontal_alignment = 1
+
+[node name="Items" type="Control" parent="." unique_id=214039135]
+anchors_preset = 0
+offset_top = 150.0
+offset_right = 1152.0
+offset_bottom = 494.0
+
+[node name="Item0" type="Control" parent="Items" unique_id=2004579258]
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 80.0
+
+[node name="NameLabel" type="Label" parent="Items/Item0" unique_id=1910208711]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 8.0
+offset_right = 700.0
+offset_bottom = 72.0
+theme_override_colors/font_color = Color(0.9254902, 0.9529412, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "Gyorsaság (szint 0)"
+vertical_alignment = 1
+
+[node name="PriceLabel" type="Label" parent="Items/Item0" unique_id=92041592]
+layout_mode = 0
+offset_left = 720.0
+offset_top = 8.0
+offset_right = 880.0
+offset_bottom = 72.0
+theme_override_colors/font_color = Color(0.96862745, 0.8509804, 0.3647059, 1)
+theme_override_font_sizes/font_size = 27
+text = "10 pont"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BuyButton" type="Button" parent="Items/Item0" unique_id=2014080380]
+layout_mode = 0
+offset_left = 900.0
+offset_top = 4.0
+offset_right = 1070.0
+offset_bottom = 76.0
+theme_override_font_sizes/font_size = 27
+text = "Vásárlás"
+
+[node name="Item1" type="Control" parent="Items" unique_id=4599141]
+anchors_preset = 0
+offset_top = 88.0
+offset_right = 1152.0
+offset_bottom = 168.0
+
+[node name="NameLabel" type="Label" parent="Items/Item1" unique_id=1526838547]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 8.0
+offset_right = 700.0
+offset_bottom = 72.0
+theme_override_colors/font_color = Color(0.9254902, 0.9529412, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "Ugrás (szint 0)"
+vertical_alignment = 1
+
+[node name="PriceLabel" type="Label" parent="Items/Item1" unique_id=938914846]
+layout_mode = 0
+offset_left = 720.0
+offset_top = 8.0
+offset_right = 880.0
+offset_bottom = 72.0
+theme_override_colors/font_color = Color(0.96862745, 0.8509804, 0.3647059, 1)
+theme_override_font_sizes/font_size = 27
+text = "10 pont"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BuyButton" type="Button" parent="Items/Item1" unique_id=901087018]
+layout_mode = 0
+offset_left = 900.0
+offset_top = 4.0
+offset_right = 1070.0
+offset_bottom = 76.0
+theme_override_font_sizes/font_size = 27
+text = "Vásárlás"
+
+[node name="Item2" type="Control" parent="Items" unique_id=816826164]
+anchors_preset = 0
+offset_top = 176.0
+offset_right = 1152.0
+offset_bottom = 256.0
+
+[node name="NameLabel" type="Label" parent="Items/Item2" unique_id=159114227]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 8.0
+offset_right = 700.0
+offset_bottom = 72.0
+theme_override_colors/font_color = Color(0.9254902, 0.9529412, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "Mágnes erő (szint 0)"
+vertical_alignment = 1
+
+[node name="PriceLabel" type="Label" parent="Items/Item2" unique_id=813055556]
+layout_mode = 0
+offset_left = 720.0
+offset_top = 8.0
+offset_right = 880.0
+offset_bottom = 72.0
+theme_override_colors/font_color = Color(0.96862745, 0.8509804, 0.3647059, 1)
+theme_override_font_sizes/font_size = 27
+text = "15 pont"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BuyButton" type="Button" parent="Items/Item2" unique_id=121050393]
+layout_mode = 0
+offset_left = 900.0
+offset_top = 4.0
+offset_right = 1070.0
+offset_bottom = 76.0
+theme_override_font_sizes/font_size = 27
+text = "Vásárlás"
+
+[node name="Item3" type="Control" parent="Items" unique_id=1708857987]
+anchors_preset = 0
+offset_top = 264.0
+offset_right = 1152.0
+offset_bottom = 344.0
+
+[node name="NameLabel" type="Label" parent="Items/Item3" unique_id=1403498824]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 8.0
+offset_right = 700.0
+offset_bottom = 72.0
+theme_override_colors/font_color = Color(0.9254902, 0.9529412, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "Mágnes sebesség (szint 0)"
+vertical_alignment = 1
+
+[node name="PriceLabel" type="Label" parent="Items/Item3" unique_id=659151930]
+layout_mode = 0
+offset_left = 720.0
+offset_top = 8.0
+offset_right = 880.0
+offset_bottom = 72.0
+theme_override_colors/font_color = Color(0.96862745, 0.8509804, 0.3647059, 1)
+theme_override_font_sizes/font_size = 27
+text = "15 pont"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BuyButton" type="Button" parent="Items/Item3" unique_id=1847223106]
+layout_mode = 0
+offset_left = 900.0
+offset_top = 4.0
+offset_right = 1070.0
+offset_bottom = 76.0
+theme_override_font_sizes/font_size = 27
+text = "Vásárlás"
+
+[node name="MessageLabel" type="Label" parent="." unique_id=1123656086]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 498.0
+offset_right = 976.0
+offset_bottom = 544.0
+theme_override_colors/font_color = Color(0.5058824, 1, 0.5647059, 1)
+theme_override_font_sizes/font_size = 28
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackButton" type="Button" parent="." unique_id=1918839728]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 552.0
+offset_right = 280.0
+offset_bottom = 620.0
+theme_override_font_sizes/font_size = 32
+text = "Vissza"

@@ -23,6 +23,7 @@ enum Polarity { NORTH, SOUTH }
 @export var max_magnetic_speed: float = 2500.0
 @export var magnet_contact_tolerance: float = 24.0
 
+@onready var PolarityCh := $AudioStreamPlayer2D
 @onready var magnet_sensor: Area2D = get_node_or_null("magnetSensor")
 
 var points: int = 0
@@ -34,6 +35,7 @@ func _ready() -> void:
 
 func add_point() -> void:
 	points += 1
+	
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -41,9 +43,12 @@ func _unhandled_input(event: InputEvent) -> void:
 		if current_polarity == Polarity.NORTH:
 			current_polarity = Polarity.SOUTH
 			print("Pólus váltva: DÉL (SOUTH)")
+			PolarityCh.play()
+			
 		else:
 			current_polarity = Polarity.NORTH
 			print("Pólus váltva: ÉSZAK (NORTH)")
+			PolarityCh.play()
 
 
 func _physics_process(delta: float) -> void:
