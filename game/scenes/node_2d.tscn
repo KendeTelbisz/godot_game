@@ -2,26 +2,18 @@
 
 [ext_resource type="Texture2D" uid="uid://b7rf61t1bsl6r" path="res://assets/object-NEG.svg" id="1_6e84v"]
 [ext_resource type="Texture2D" uid="uid://ctqlyjfiprucf" path="res://assets/player.svg" id="2_4dvvg"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_efyvp"]
-radius = 397.22662
+[ext_resource type="Script" uid="uid://dxwpcmmldsgvg" path="res://scripts/player.gd" id="2_rnjyy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ehp6r"]
 radius = 179.7248
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_efyvp"]
+radius = 397.22662
+
 [node name="Node2D" type="Node2D" unique_id=2050736834]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=742385382]
-position = Vector2(2365, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=2004015732]
-texture = ExtResource("1_6e84v")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=475648352]
-shape = SubResource("CircleShape2D_efyvp")
-debug_color = Color(0.97995514, 0, 0.38765994, 0.41960785)
-
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=935676778]
+script = ExtResource("2_rnjyy")
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=13016131]
 position = Vector2(5.3048134e-06, 0.50001574)
@@ -32,3 +24,17 @@ texture = ExtResource("2_4dvvg")
 shape = SubResource("CircleShape2D_ehp6r")
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=120543977]
+scale = Vector2(6.559999, 2)
+zoom = Vector2(0.05, 0.05)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1829996483]
+position = Vector2(1979, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=475648352]
+position = Vector2(-1, 0)
+shape = SubResource("CircleShape2D_efyvp")
+debug_color = Color(0.97995514, 0, 0.38765994, 0.41960785)
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=2004015732]
+position = Vector2(-1, 0)
+texture = ExtResource("1_6e84v")
