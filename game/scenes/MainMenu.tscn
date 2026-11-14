@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://fi5x5cul5mj8" path="res://assets/START.png" id="1_0ykhv"]
 [ext_resource type="Script" uid="uid://gpfgmr0jxaq6" path="res://scripts/start button.gd" id="2_0ykhv"]
+[ext_resource type="Script" path="res://scripts/menu.gd" id="3_menu"]
 
 [sub_resource type="FontVariation" id="FontVariation_yqorp"]
 
@@ -12,6 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("3_menu")
 
 [node name="Button" type="Button" parent="." unique_id=1143703865]
 layout_mode = 0
@@ -26,5 +28,15 @@ icon = ExtResource("1_0ykhv")
 flat = true
 autowrap_trim_flags = 192
 script = ExtResource("2_0ykhv")
+
+[node name="ScoreLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 178.0
+offset_top = 380.0
+offset_right = 1006.0
+offset_bottom = 450.0
+theme_override_font_sizes/font_size = 44
+text = "Pont: 0"
+horizontal_alignment = 1
 
 [connection signal="pressed" from="Button" to="Button" method="_on_pressed"]

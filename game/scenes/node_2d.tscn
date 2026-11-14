@@ -1,13 +1,9 @@
 [gd_scene format=3 uid="uid://dxllcsff00ecp"]
 
-[ext_resource type="Texture2D" uid="uid://b7rf61t1bsl6r" path="res://assets/object-NEG.svg" id="1_6e84v"]
 [ext_resource type="Texture2D" uid="uid://ctqlyjfiprucf" path="res://assets/player.svg" id="2_4dvvg"]
 [ext_resource type="AudioStream" uid="uid://crxlifi1hp3g" path="res://scripts/sound(2).wav" id="2_fws66"]
 [ext_resource type="Script" uid="uid://dxwpcmmldsgvg" path="res://scripts/player.gd" id="2_rnjyy"]
-[ext_resource type="Script" uid="uid://ss6uosh6hts8" path="res://scripts/magnet_N.gd" id="3_j7wrs"]
-[ext_resource type="Texture2D" uid="uid://cv5pfubdxexqn" path="res://assets/object-POS.svg" id="5_04qyp"]
-[ext_resource type="Script" uid="uid://c7nigdf3btjic" path="res://scripts/magnet_P.gd" id="5_fws66"]
-[ext_resource type="Script" uid="uid://bnjqgiq6vi4bh" path="res://scripts/game.gd" id="8_game"]
+[ext_resource type="Script" path="res://scripts/game.gd" id="8_game"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_efyvp"]
 radius = 182.84967
@@ -15,21 +11,18 @@ radius = 182.84967
 [sub_resource type="CircleShape2D" id="CircleShape2D_ytkqx"]
 radius = 4000.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_6e84v"]
-radius = 396.4669
-
 [node name="Node2D" type="Node2D" unique_id=2050736834]
 script = ExtResource("8_game")
 
-[node name="HUD" type="CanvasLayer" parent="." unique_id=1318252162]
+[node name="HUD" type="CanvasLayer" parent="."]
 
-[node name="PointsLabel" type="Label" parent="HUD" unique_id=1257746836]
+[node name="PointsLabel" type="Label" parent="HUD"]
 offset_left = 24.0
 offset_top = 16.0
 offset_right = 420.0
 offset_bottom = 64.0
 theme_override_font_sizes/font_size = 28
-text = "Pont: 0 / 6"
+text = "Pont: 0 / 32"
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1612839325]
 script = ExtResource("2_rnjyy")
@@ -55,35 +48,3 @@ shape = SubResource("CircleShape2D_ytkqx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Area2D" unique_id=1977163401]
 shape = SubResource("CircleShape2D_efyvp")
-
-[node name="Magnet-N001" type="Area2D" parent="." unique_id=1326027472]
-position = Vector2(1631, 12)
-script = ExtResource("3_j7wrs")
-
-[node name="Sprite2D" type="Sprite2D" parent="Magnet-N001" unique_id=1655955701]
-texture = ExtResource("1_6e84v")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Magnet-N001" unique_id=1785998965]
-shape = SubResource("CircleShape2D_6e84v")
-debug_color = Color(0.994831, 0, 0.22318771, 0.41960785)
-
-[node name="Solid" type="StaticBody2D" parent="Magnet-N001" unique_id=884422110]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Magnet-N001/Solid" unique_id=556677889]
-shape = SubResource("CircleShape2D_6e84v")
-
-[node name="Magnet-P001" type="Area2D" parent="." unique_id=573376002]
-position = Vector2(3909, -2398)
-script = ExtResource("5_fws66")
-
-[node name="Sprite2D" type="Sprite2D" parent="Magnet-P001" unique_id=1100515993]
-texture = ExtResource("5_04qyp")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Magnet-P001" unique_id=92245072]
-shape = SubResource("CircleShape2D_6e84v")
-debug_color = Color(0.994831, 0, 0.22318771, 0.41960785)
-
-[node name="Solid" type="StaticBody2D" parent="Magnet-P001" unique_id=215532967]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Magnet-P001/Solid" unique_id=2046084682]
-shape = SubResource("CircleShape2D_6e84v")
