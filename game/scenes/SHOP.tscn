@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://e5yyftesxbys"]
 
 [ext_resource type="Script" uid="uid://dlthqr0dytr4e" path="res://scripts/shop.gd" id="1_shop"]
-[ext_resource type="AudioStream" uid="uid://bdbl0chlw4b8b" path="res://assets/sound(2).wav" id="2_3lq0f"]
+[ext_resource type="AudioStream" uid="uid://el8trip3kqph" path="res://assets/BeepBox-Song.wav" id="2_3lq0f"]
 
 [node name="Control" type="Control" unique_id=739134528]
 layout_mode = 3

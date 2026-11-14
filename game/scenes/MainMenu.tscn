@@ -2,11 +2,12 @@
 
 [ext_resource type="Texture2D" uid="uid://fi5x5cul5mj8" path="res://assets/START.png" id="1_0ykhv"]
 [ext_resource type="Script" uid="uid://gpfgmr0jxaq6" path="res://scripts/start button.gd" id="2_0ykhv"]
-[ext_resource type="Script" path="res://scripts/menu.gd" id="3_menu"]
+[ext_resource type="Script" uid="uid://t5opbd1dkkyb" path="res://scripts/menu.gd" id="3_menu"]
+[ext_resource type="AudioStream" uid="uid://el8trip3kqph" path="res://assets/BeepBox-Song.wav" id="4_ow34m"]
 
 [sub_resource type="FontVariation" id="FontVariation_yqorp"]
 
-[node name="Control" type="Control" unique_id=1262507833]
+[node name="Control2" type="Control" unique_id=1262507833]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,12 +16,21 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_menu")
 
+[node name="Background" type="ColorRect" parent="." unique_id=377202745]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.05490196, 0.09411765, 1)
+
 [node name="Button" type="Button" parent="." unique_id=1143703865]
 layout_mode = 0
-offset_left = 177.99998
-offset_top = 498.0
-offset_right = 1006.0
-offset_bottom = 709.0
+offset_left = 257.0
+offset_top = 367.0
+offset_right = 1085.0
+offset_bottom = 578.0
 scale = Vector2(0.8872727, 0.68663275)
 theme_override_fonts/font = SubResource("FontVariation_yqorp")
 theme_override_font_sizes/font_size = 50
@@ -29,24 +39,30 @@ flat = true
 autowrap_trim_flags = 192
 script = ExtResource("2_0ykhv")
 
-[node name="ScoreLabel" type="Label" parent="."]
+[node name="ScoreLabel" type="Label" parent="." unique_id=1136238530]
 layout_mode = 0
 offset_left = 178.0
-offset_top = 290.0
+offset_top = 159.0
 offset_right = 1006.0
-offset_bottom = 360.0
+offset_bottom = 229.0
 theme_override_font_sizes/font_size = 44
 text = "Pont: 0"
 horizontal_alignment = 1
 
-[node name="ShopButton" type="Button" parent="."]
+[node name="ShopButton" type="Button" parent="." unique_id=1255220202]
 layout_mode = 0
-offset_left = 440.0
-offset_top = 375.0
-offset_right = 840.0
-offset_bottom = 445.0
+offset_left = 397.0
+offset_top = 247.0
+offset_right = 797.0
+offset_bottom = 317.0
 theme_override_font_sizes/font_size = 44
 text = "BOLT"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=2021326737]
+position = Vector2(-62, 498.00003)
+scale = Vector2(1.6472728, 0.68663275)
+stream = ExtResource("4_ow34m")
+autoplay = true
 
 [connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
 [connection signal="pressed" from="ShopButton" to="." method="_on_shop_pressed"]
