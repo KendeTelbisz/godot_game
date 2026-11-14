@@ -1,14 +1,18 @@
 [gd_scene format=3 uid="uid://dxllcsff00ecp"]
 
+[ext_resource type="Texture2D" uid="uid://b7rf61t1bsl6r" path="res://assets/object-NEG.svg" id="1_6e84v"]
 [ext_resource type="Texture2D" uid="uid://ctqlyjfiprucf" path="res://assets/player.svg" id="2_4dvvg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_efyvp"]
 radius = 182.84967
 
-[node name="Node2D" type="Node2D" unique_id=2050736834]
+[sub_resource type="CircleShape2D" id="CircleShape2D_ytkqx"]
+radius = 12781.364
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1484656693]
-zoom = Vector2(0.15, 0.15)
+[sub_resource type="CircleShape2D" id="CircleShape2D_6e84v"]
+radius = 396.4669
+
+[node name="Node2D" type="Node2D" unique_id=2050736834]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1612839325]
 
@@ -18,8 +22,21 @@ shape = SubResource("CircleShape2D_efyvp")
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=1871983777]
 texture = ExtResource("2_4dvvg")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1326027472]
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=1484656693]
+zoom = Vector2(0.15, 0.15)
 
-[node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=1655955701]
+[node name="magnetSensor" type="Area2D" parent="CharacterBody2D" unique_id=769077281]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1785998965]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/magnetSensor" unique_id=344913844]
+scale = Vector2(0.76, 0.76000047)
+shape = SubResource("CircleShape2D_ytkqx")
+
+[node name="Magnet-001" type="Area2D" parent="." unique_id=1326027472]
+position = Vector2(1631, 12)
+
+[node name="Sprite2D" type="Sprite2D" parent="Magnet-001" unique_id=1655955701]
+texture = ExtResource("1_6e84v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Magnet-001" unique_id=1785998965]
+shape = SubResource("CircleShape2D_6e84v")
+debug_color = Color(0.994831, 0, 0.22318771, 0.41960785)
