@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="game"
+run/main_scene="uid://dxllcsff00ecp"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -18,7 +19,7 @@ config/icon="res://icon.svg"
 
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
-window/stretch/scale=8.0
+window/stretch/scale=1.0
 
 [physics]
 

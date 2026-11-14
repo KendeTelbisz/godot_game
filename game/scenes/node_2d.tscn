@@ -1,29 +1,25 @@
 [gd_scene format=3 uid="uid://dxllcsff00ecp"]
 
-[ext_resource type="Texture2D" uid="uid://b7rf61t1bsl6r" path="res://assets/object-NEG.svg" id="1_6e84v"]
 [ext_resource type="Texture2D" uid="uid://ctqlyjfiprucf" path="res://assets/player.svg" id="2_4dvvg"]
-[ext_resource type="Script" uid="uid://dxwpcmmldsgvg" path="res://scripts/player.gd" id="2_rnjyy"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_ehp6r"]
-radius = 179.7248
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_efyvp"]
-radius = 397.22662
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_ehp6r"]
-radius = 179.7248
+radius = 182.84967
 
 [node name="Node2D" type="Node2D" unique_id=2050736834]
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=935676778]
-script = ExtResource("2_rnjyy")
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1484656693]
+zoom = Vector2(0.15, 0.15)
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=13016131]
-position = Vector2(5.3048134e-06, 0.50001574)
-scale = Vector2(1.0084033, 0.9808744)
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1612839325]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=889227905]
+shape = SubResource("CircleShape2D_efyvp")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=1871983777]
 texture = ExtResource("2_4dvvg")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1406268899]
-shape = SubResource("CircleShape2D_ehp6r")
+[node name="Area2D" type="Area2D" parent="." unique_id=1326027472]
 
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=120543977]
+[node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=1655955701]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1785998965]
